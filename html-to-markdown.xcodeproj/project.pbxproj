@@ -6,10 +6,15 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXFileReference section */
+		F3F6366F210E94180030FC7D /* test.rb */ = {isa = PBXFileReference; lastKnownFileType = text.script.ruby; path = test.rb; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
 /* Begin PBXGroup section */
 		F3F63668210E93A10030FC7D = {
 			isa = PBXGroup;
 			children = (
+				F3F6366F210E94180030FC7D /* test.rb */,
 			);
 			sourceTree = "<group>";
 		};
