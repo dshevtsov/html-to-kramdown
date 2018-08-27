@@ -2,7 +2,7 @@ module HtmlToKramdown
   # Filters
   class Filter
     def headings
-      %r{<h\d\s*.*>.+<\/h\d>}
+      %r{^\s*<h\d\s*.*>.+<\/h\d>}
     end
 
     def links
