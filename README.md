@@ -1,4 +1,4 @@
-The tool helps to convert to Kramdown the particular types of HTML elements in the markdown documents.
+The tool helps to convert to Kramdown the particular types of HTML elements in `.md` files.
 
 ## Usage
 
