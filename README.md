@@ -23,7 +23,9 @@ bin/html-to-kramdown /Users/dshevtsov/projects/devdocs/ --images
 
 ## Requirements
 
-`gem install kramdown`
+```
+$ gem install kramdown
+```
 
 ## Precautions
 
