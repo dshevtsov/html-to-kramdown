@@ -1,4 +1,4 @@
-The tool helps to convert the particular types of HTML entities in the markdown documents to Kramdown.
+The tool helps to convert to Kramdown the particular types of HTML elements in the markdown documents.
 
 ## Usage
 
@@ -29,7 +29,7 @@ $ gem install kramdown
 
 ## Precautions
 
-The tool converts each HTML occurrence that you provided.
+The tool converts each HTML element of the type you provided as option.
 For example, with the `--links` option, it converts each HTML link contained in documents in the requested path.
 
 Note, that the Kramdown parser doesn't recognize Kramdown elements inside HTML blocks by default.
