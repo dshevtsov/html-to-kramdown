@@ -6,7 +6,7 @@ module HtmlToKramdown
   # convert them to Kramdown, and return the updated content
   class Crawler
     def links_to_kramdown(content)
-      content.gsub(links, &replace)
+      content.gsub(links, &replace).strip
     end
 
     def headings_to_kramdown(content)
@@ -14,7 +14,7 @@ module HtmlToKramdown
     end
 
     def images_to_kramdown(content)
-      content.gsub(images, &replace)
+      content.gsub(images, &replace).strip
     end
 
     def tables_to_kramdown(content)
@@ -30,7 +30,7 @@ module HtmlToKramdown
     end
 
     def convert_to_kramdown(string, options = {})
-      converter.to_kramdown(string, options).delete!("\n\n")
+      converter.to_kramdown(string, options)
     end
 
     def matcher

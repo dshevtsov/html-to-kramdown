@@ -16,5 +16,11 @@ module HtmlToKramdown
     def images
       /(^<img.+>)/
     end
+
+    # TODO
+    def notes; end
+
+    # TODO
+    def lists; end
   end
 end
