@@ -6,19 +6,20 @@ module HtmlToKramdown
     end
 
     def links
-      %r{(<a href=.+</a>)}
+      %r{<a href=.+</a>}
     end
 
     def tables
-      %r{(<table[^>]*>(?:.|\n)*?<\/table>)}
-    end
+      %r{<table[^>]*>(?:.|\n)*?<\/table>}
+   end
 
     def images
       /(^<img.+>)/
     end
 
-    # TODO
-    def notes; end
+    def notes
+      %r{<div class="bs-callout bs-callout.+>(?:.|\n)*?<\/div>}
+    end
 
     # TODO
     def lists; end
