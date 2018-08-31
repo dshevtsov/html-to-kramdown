@@ -4,7 +4,7 @@ require 'pp'
 module HtmlToKramdown
   # CLI option parser
   class Options
-    VERSION = '2'.freeze
+    VERSION = '3'.freeze
     # CLI options initialization
     class ScriptOptions
       attr_accessor :links, :tables, :images, :headings
