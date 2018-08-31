@@ -1,5 +1,4 @@
 require_relative 'converters/kramdown.rb'
-require 'pandoc-ruby'
 module HtmlToKramdown
   # Converts input HTML to kramdown
   class Converter

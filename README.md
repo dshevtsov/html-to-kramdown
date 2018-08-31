@@ -11,9 +11,9 @@ If `PATH` is a directory, the tool reads all the `.md` files recursively.
 ### Available options
 
 - `--images`
-- `--headings` - adds a blank line after a heading.
-- `--links` - converts to inline links.
-- `--tables` - adds two blank lines after a table.
+- `--headings`
+- `--links`
+- `--tables`
 
 ### Example
 
@@ -30,7 +30,7 @@ $ gem install kramdown
 ## Precautions
 
 Note, that the Kramdown parser doesn't recognize Kramdown elements inside HTML blocks by default.
-To make it work, provide additional parameter to tell Kramdown to parse kramdown inside HTML: `markdown="1"`, or `markdown="span"`, or `markdown="block"`
+To make it work, provide additional parameter to enable Kramdown parsing within HTML: `markdown="1"`, or `markdown="span"`, or `markdown="block"`
 
 Breaking example:
 ```html
