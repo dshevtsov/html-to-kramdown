@@ -18,7 +18,11 @@ module HtmlToKramdown
     end
 
     def tables_to_kramdown(content)
-      content.gsub(tables, &replace) 
+      content.gsub(tables, &replace)
+    end
+
+    def notes_to_kramdown(content)
+      content.gsub(notes, &replace)
     end
 
     def replace
@@ -51,6 +55,10 @@ module HtmlToKramdown
 
     def tables
       filter.tables
+    end
+
+    def notes
+      filter.notes
     end
   end
 end

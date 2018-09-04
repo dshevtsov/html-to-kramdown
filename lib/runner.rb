@@ -10,7 +10,7 @@ module HtmlToKramdown
     attr_reader :path, :args
 
     def initialize(args)
-      @args = args
+      @args = args # return --help if no options were provided
     end
 
     EXTENSIONS = ['.md'].freeze
@@ -18,9 +18,11 @@ module HtmlToKramdown
     def run
       # Parse CLI options
       @options = Options.parse(args)
-      # After the parsing only the ARGV[0] (firtst argument in the CLI) remains in the arrray.
+      # After the parsing, the ARGV[0] (firtst argument in the CLI) remains in the array only.
       # Convert the path to String to use with Find.find
+
       path = args.join
+
       Find.find(path) do |item|
         puts "Starting with #{item} ..."
         if FileTest.file?(item)
@@ -55,6 +57,10 @@ module HtmlToKramdown
       elsif @options.headings
         @content = reader.all(file)
         converted_content = crawler.headings_to_kramdown(@content)
+        write(file, converted_content)
+      elsif @options.notes
+        @content = reader.all(file)
+        converted_content = crawler.notes_to_kramdown(@content)
         write(file, converted_content)
       end
     end

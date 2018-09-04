@@ -4,16 +4,17 @@ require 'pp'
 module HtmlToKramdown
   # CLI option parser
   class Options
-    VERSION = '4'.freeze
+    VERSION = '5'.freeze
     # CLI options initialization
     class ScriptOptions
-      attr_accessor :links, :tables, :images, :headings
+      attr_accessor :links, :tables, :images, :headings, :notes, :help
 
       def initialize
         self.links = false
         self.tables = false
         self.images = false
         self.headings = false
+        self.notes = false
       end
     end
 
@@ -39,6 +40,7 @@ module HtmlToKramdown
         headings_option parser
         images_option parser
         tables_option parser
+        notes_option parser
 
         parser.separator ''
         parser.separator 'Common options:'
@@ -77,6 +79,12 @@ module HtmlToKramdown
     def self.tables_option(parser)
       parser.on('-t', '--tables', 'Convert HTML tables in the .md files in the given path recursively.') do |t|
         @options.tables = t
+      end
+    end
+
+    def self.notes_option(parser)
+      parser.on('-n', '--notes', 'Convert content of HTML notes in the .md files in the given path recursively.') do |n|
+        @options.notes = n
       end
     end
   end
