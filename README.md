@@ -14,7 +14,10 @@ If `PATH` is a directory, the tool reads all the `.md` files recursively.
 - `--headings`
 - `--links`
 - `--tables`
-- `--notes` - converts notes like `<div class="bs-callout bs-callout-xxx">...` to Kramdown and adds `markdown=1` argument.
+- `--notes` - converts notes like `<div class="bs-callout bs-callout-xxx" ... >...</div>` to Kramdown and adds the `markdown="1"` argument if it is not there. Same as `--notes_html` + `--notes_wih_md`.
+- `--notes_html` - converts HTML content in the notes of format `<div class="bs-callout bs-callout-xxx" ... >...</div>` and adds the `markdown="1"` argument.
+- `--notes_wih_md` - converts mixed content in the notes of format `<div class="bs-callout bs-callout-xxx" markdown="1">...</div>`
+
 **Cution:** If the note is already in the valid Kramdown format and doesn't contain HTML, the tool still converts it and can break the valid formatting.
 
 ### Example

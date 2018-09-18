@@ -21,6 +21,14 @@ module HtmlToKramdown
       %r{<div class="bs-callout bs-callout.+>(?:.|\n)*?<\/div>}
     end
 
+    def notes_html
+      %r{<div class="bs-callout (bs-callout-(info|warning|tip))"[[:blank:]]?(id="\2")?[[:blank:]]?>(?:.|\n)*?<\/div>}
+    end
+
+    def notes_with_md
+      %r{<div class="bs-callout (bs-callout-(info|warning|tip))"[[:blank:]]?(id="\2")?[[:blank:]]?markdown="1">(?:.|\n)*?<\/div>}
+    end
+
     # TODO
     def lists; end
   end

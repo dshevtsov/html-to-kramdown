@@ -78,6 +78,7 @@ describe Crawler do
     </tr>
   </tbody>
 </table>
+
       HTML
                                  ).must_equal(<<-KRMD
 |  |  |  |  |  |  |
@@ -85,6 +86,7 @@ describe Crawler do
 |  |  |  |  |  |  |
 |  |  |  |  |  |  |
 |  |  |  |  |  |  |
+
       KRMD
                                              )
     end
@@ -105,7 +107,9 @@ describe Crawler do
                                 ).must_equal <<-KRAMDOWN
 <div class="bs-callout bs-callout-warning" markdown="1">
 Don’t configure the module in your local before building and deploying. You’ll configure the module in those environments.
+
 We recommend using the `bin/magento magento-cloud:scd-dump` command for Configuration Management ([2.1.X]({{ site.baseurl }}/guides/v2.1/cloud/live/sens-data-over.html#cloud-config-specific-recomm), [2.2.X]({{ site.baseurl }}/guides/v2.2/cloud/live/sens-data-over.html#cloud-config-specific-recomm)). If you use the `app:config:dump` command, all configuration options for Fastly will be locked from editing in Staging and Production.
+
 </div>
       KRAMDOWN
     end
@@ -125,8 +129,11 @@ We recommend using the `bin/magento magento-cloud:scd-dump` command for Configur
       HTML
                                 ).must_equal <<-KRAMDOWN
 <div class="bs-callout bs-callout-warning" markdown="1">
-Don’t configure the module in your local before building and deploying. You’ll configure the module in those environments. We recommend using the `bin/magento magento-cloud:scd-dump` command for Configuration Management ([2.1.X]({{ site.baseurl }}/guides/v2.1/cloud/live/sens-data-over.html#cloud-config-specific-recomm), [2.2.X]({{ site.baseurl }}/guides/v2.2/cloud/live/sens-data-over.html#cloud-config-specific-recomm)).
+Don’t configure the module in your local before building and deploying. You’ll configure the module in those environments.
+
+We recommend using the `bin/magento magento-cloud:scd-dump` command for Configuration Management ([2.1.X]({{ site.baseurl }}/guides/v2.1/cloud/live/sens-data-over.html#cloud-config-specific-recomm), [2.2.X]({{ site.baseurl }}/guides/v2.2/cloud/live/sens-data-over.html#cloud-config-specific-recomm)).
 If you use the `app:config:dump` command, all configuration options for Fastly will be locked from editing in Staging and Production.
+
 </div>
       KRAMDOWN
     end
@@ -147,6 +154,22 @@ We'll periodically add more cache alternatives so watch this space.
     end
   end
 
+  describe 'when converting a note wrapped in div with markdown="1" but with no HTML ' do
+    it 'must remain it as is' do
+      @crawler.notes_html_to_kramdown(<<-HTML
+<div class="bs-callout bs-callout-info">
+<a href="{{ page.baseurl }}/cloud/bk-cloud.html">{{site.data.var.ece}}</a> supports production mode only.
+</div>
+HTML
+).must_equal <<-KRAMDOWN
+<div class="bs-callout bs-callout-info" markdown="1">
+[{{site.data.var.ece}}]({{ page.baseurl }}/cloud/bk-cloud.html) supports production mode only.
+</div>
+      KRAMDOWN
+    end
+  end
+        
+
   ##TOtest
 #<div class="bs-callout bs-callout-info" markdown="1">
 
@@ -160,11 +183,6 @@ We'll periodically add more cache alternatives so watch this space.
 ##TOtest
 #<div class="bs-callout bs-callout-info" id="info" markdown="1">
 #The default configuration is set in [`<magento2>/dev/tests/functional/etc/config.xml.dist`]({{ site.mage2000url }}dev/tests/functional/etc/config.xml.dist). It should be copied as `config.xml` for further changes.
-#</div>
-
-##TOtest
-#<div class="bs-callout bs-callout-info">
-#<a href="{{ page.baseurl }}/cloud/bk-cloud.html">{{site.data.var.ece}}</a> supports production mode only.
 #</div>
 
 end

@@ -25,12 +25,20 @@ module HtmlToKramdown
       content.gsub(notes, &replace)
     end
 
+    def notes_html_to_kramdown(content)
+      content.gsub(notes_html, &replace)
+    end
+
+    def notes_with_md_to_kramdown(content)
+      content.gsub(notes_with_md, &replace)
+    end
+
     def replace
       ->(s) { convert_to_kramdown(s) }
     end
 
     def convert_to_kramdown(string, options = {})
-      converter.to_kramdown(string, options).chomp
+      converter.to_kramdown(string, options).rstrip
     end
 
     def converter
@@ -59,6 +67,14 @@ module HtmlToKramdown
 
     def notes
       filter.notes
+    end
+
+    def notes_html
+      filter.notes_html
+    end
+
+    def notes_with_md
+      filter.notes_with_md
     end
   end
 end

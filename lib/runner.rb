@@ -62,6 +62,14 @@ module HtmlToKramdown
         @content = reader.all(file)
         converted_content = crawler.notes_to_kramdown(@content)
         write(file, converted_content)
+      elsif @options.notes_html
+        @content = reader.all(file)
+        converted_content = crawler.notes_html_to_kramdown(@content)
+        write(file, converted_content)
+      elsif @options.notes_with_md
+        @content = reader.all(file)
+        converted_content = crawler.notes_with_md_to_kramdown(@content)
+        write(file, converted_content)
       end
     end
 

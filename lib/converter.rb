@@ -3,7 +3,7 @@ module HtmlToKramdown
   # Converts input HTML to kramdown
   class Converter
     def default_options
-      { html_to_native: false, line_width: 1000, input: 'html' }
+      { html_to_native: true, line_width: 1000, input: 'html' }
     end
 
     def to_kramdown(string, options = {})

@@ -7,7 +7,7 @@ module HtmlToKramdown
     VERSION = '5'.freeze
     # CLI options initialization
     class ScriptOptions
-      attr_accessor :links, :tables, :images, :headings, :notes, :help
+      attr_accessor :links, :tables, :images, :headings, :notes, :help, :notes_html, :notes_html_md
 
       def initialize
         self.links = false
@@ -15,6 +15,8 @@ module HtmlToKramdown
         self.images = false
         self.headings = false
         self.notes = false
+        self.notes_html = false
+        self.notes_html_md = false
       end
     end
 
@@ -41,6 +43,8 @@ module HtmlToKramdown
         images_option parser
         tables_option parser
         notes_option parser
+        notes_html_option parser
+        notes_with_md_option parser
 
         parser.separator ''
         parser.separator 'Common options:'
@@ -85,6 +89,18 @@ module HtmlToKramdown
     def self.notes_option(parser)
       parser.on('-n', '--notes', 'Convert content of HTML notes in the .md files in the given path recursively.') do |n|
         @options.notes = n
+      end
+    end
+
+    def self.notes_html_option(parser)
+      parser.on('-h', '--notes_html', 'Convert HTML notes WITHOUT "mardown=1" in the .md files in the given path recursively.') do |nh|
+        @options.notes_html = nh
+      end
+    end
+    
+    def self.notes_with_md_option(parser)
+      parser.on('-m', '--notes-with-md', 'Convert HTML notes WITH "mardown=1" in the .md files in the given path recursively.') do |nm|
+        @options.notes_with_md = nm
       end
     end
   end
